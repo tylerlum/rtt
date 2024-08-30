@@ -618,12 +618,22 @@ namespace RTT
 #else // OROBLD_DISABLE_LOGGING
 
     Logger::Logger(std::ostream& )
+        // : d(0), inpguard(0), logline(0), fileline(0)
         : d(0)
     {
     }
 
     Logger::~Logger()
     {
+    }
+
+    Logger& Logger::operator<<( const char* t ) {
+        return *this;
+    }
+
+    TimeService::ticks Logger::getReferenceTime()const
+    {
+        return TimeService::ticks(0);
     }
 
 #endif

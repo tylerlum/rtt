@@ -101,9 +101,11 @@ namespace RTT
          * operator<<(T t) behavior for setting the stream
          * formatting etc.
          */
+#ifndef OROBLD_DISABLE_LOGGING
         os::Mutex& inpguard;
         std::ostream& logline;
         std::ostream& fileline;
+#endif
     public:
 
         /**
