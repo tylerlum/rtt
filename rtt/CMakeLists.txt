@@ -54,13 +54,12 @@ IF ( OS_EMBEDDED )
 ENDIF ( OS_EMBEDDED )
 
 ### Logger
+set(OROBLD_DISABLE_LOGGING ON CACHE BOOL "Disable Logging Infrastructure" FORCE)  # HACK: Force disable logging to avoid log4cxx issues
 # OPTION(OROBLD_DISABLE_LOGGING "Disable Logging Infrastructure" ON)
-set(OROBLD_DISABLE_LOGGING ON CACHE BOOL "Disable Logging Infrastructure" FORCE)
 CMAKE_DEPENDENT_OPTION(OROSEM_PRINTF_LOGGING "Logger uses printf()/fprintf() instead of std::iostream." OFF "NOT OROBLD_DISABLE_LOGGING" OFF)
 CMAKE_DEPENDENT_OPTION(OROSEM_FILE_LOGGING "Logger logs to orocos.log file." ON "NOT OROBLD_DISABLE_LOGGING" OFF)
 CMAKE_DEPENDENT_OPTION(OROSEM_REMOTE_LOGGING "Logger allows remote log retrieval." ON "NOT OROBLD_DISABLE_LOGGING" OFF)
 CMAKE_DEPENDENT_OPTION(OROSEM_LOG4CPP_LOGGING "Logger logs to log4cpp infrastructure (replaces file and printf logging) ." OFF "NOT OROBLD_DISABLE_LOGGING;OROSEM_FILE_LOGGING" OFF)
-# SET(OROSEM_LOG4CPP_LOGGING OFF)
 
 IF (OROSEM_REMOTE_LOGGING AND NOT OROBLD_DISABLE_LOGGING)
   SET(ORONUM_LOGGING_BUFSIZE 1000 CACHE STRING "Maximum number of lines kept for remote log retrieval.")
