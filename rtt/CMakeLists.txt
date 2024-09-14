@@ -54,7 +54,7 @@ IF ( OS_EMBEDDED )
 ENDIF ( OS_EMBEDDED )
 
 ### Logger
-OPTION(OROBLD_DISABLE_LOGGING "Disable Logging Infrastructure" ON)
+OPTION(OROBLD_DISABLE_LOGGING "Disable Logging Infrastructure" OFF)
 # set(OROBLD_DISABLE_LOGGING ON CACHE BOOL "Disable Logging Infrastructure" FORCE)  # HACK: Force disable logging to avoid log4cxx issues
 CMAKE_DEPENDENT_OPTION(OROSEM_PRINTF_LOGGING "Logger uses printf()/fprintf() instead of std::iostream." OFF "NOT OROBLD_DISABLE_LOGGING" OFF)
 CMAKE_DEPENDENT_OPTION(OROSEM_FILE_LOGGING "Logger logs to orocos.log file." ON "NOT OROBLD_DISABLE_LOGGING" OFF)
